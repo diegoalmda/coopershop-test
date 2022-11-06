@@ -14,8 +14,6 @@ export function HeaderComponent() {
   const [totalValue, setTotalValue] = useState('');
   const { cartItems, removeItemFromCart, addItemToCart } = useCartContext();
 
-  console.log(cartItems)
-
   function calcTotal() {
     const total = cartItems.reduce((total, item) => (item.quantity * item.price) + total, 0);
     const totalPriceFormatted = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', }).format(total);
