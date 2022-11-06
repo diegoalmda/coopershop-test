@@ -10,6 +10,7 @@ import { ICartData, ICartItem } from '../types/DataType';
 type CartContextType  = {
   cartItems: ICartData[];
   addItemToCart: (item: ICartItem) => void;
+  removeItemFromCart: (item: ICartItem) => void;
 }
 
 const GlobalCartContext = createContext({} as CartContextType);
@@ -24,37 +25,43 @@ function GlobalCartContextProvider({
   
   const [cartItems, setCartItems] = useState<ICartData[]>([]);
 
-  function addItemToCart(item: ICartItem) {
-    console.log(item)
-    const updatedCartItems = cartItems.map(product => {
-      if(product.name === item.name && product.selected_size === item.selected_size) {
-        return {
-          ...product,
-          quantity: product.quantity + 1
-        }
-      } else {
-        return product;
-      }
-    });
-    setCartItems(updatedCartItems);
+  function addItemToCart(item: ICartItem) {    
+    const indexItemMatched = 
+      cartItems.findIndex(product => (product.name === item.name && product.selected_size === item.selected_size));
+
+    if (indexItemMatched !== -1) {
+      let auxItems = [...cartItems];
+      auxItems[indexItemMatched].quantity = cartItems[indexItemMatched].quantity + 1; 
+      setCartItems(auxItems);
+    } else {
+      let auxItems = [...cartItems];
+      auxItems.push({
+        ...item,
+        quantity: 1
+      });
+      setCartItems(auxItems);
+    }    
   }
   
-  function removeItemFromCart(item: ICartData) {
-    // const updatedCartItems = cartItems.map(product => {
-    //   if(product.name === item.name && product.selected_size === item.selected_size && product.quantity > 1) {
-    //     return {
-    //       ...product,
-    //       quantity: product.quantity - 1
-    //     }
-    //   } 
-    //   if(product.quantity === 1) {
+  function removeItemFromCart(item: ICartItem) {
+    const indexItemMatched = 
+      cartItems.findIndex(product => (product.name === item.name && product.selected_size === item.selected_size));
 
-    //   }
-    // });
-    // setCartItems(updatedCartItems);
-  }
-
-  
+    if (indexItemMatched !== -1 && cartItems[indexItemMatched].quantity > 1) {
+      let auxItems = [...cartItems];
+      auxItems[indexItemMatched].quantity = cartItems[indexItemMatched].quantity - 1; 
+      setCartItems(auxItems);
+    } else {
+      const auxItems = cartItems.filter(product => (product.name !== item.name && product.selected_size !== item.selected_size));
+      setCartItems(auxItems);
+    }
+    
+    // if(indexItemMatched !== -1 && cartItems[indexItemMatched].quantity === 1) {
+    //   const auxItems = cartItems.filter(product => (product.name !== item.name && product.selected_size !== item.selected_size));
+    //   console.log("AUX", auxItems)
+    //   setCartItems(auxItems);
+    // }
+  }  
 
   useEffect(() => {
     
@@ -64,7 +71,8 @@ function GlobalCartContextProvider({
     <GlobalCartContext.Provider
       value={{
         cartItems,
-        addItemToCart
+        addItemToCart,
+        removeItemFromCart
       }}
     >
       {children}

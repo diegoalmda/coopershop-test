@@ -1,5 +1,4 @@
 import Modal from 'react-bootstrap/Modal';
-import Form from 'react-bootstrap/Form';
 import { ICartItem, IProductData } from '../types/DataType';
 import Image from "next/image";
 import { useCartContext } from '../contexts/CartContext';
@@ -64,16 +63,11 @@ export function ModalComponent({ product, showModal, setShowModal }: ModalProps)
         <p className="lh-1">Vendido por: {product.seller}</p>
         <p className="lh-1">Esporte: {product.sport}</p>
         <p className="lh-1">Categoria: {product.type}</p>
-        <div className="row d-flex align-self-baseline" style={{ height: '100px' }}>
+        <div className="row d-flex align-self-baseline" style={{ height: '150px' }}>
           <p className="fw-bold">Tamanhos disponíveis</p>
+          { product.available_sizes.length !== 0 && <span className="fw-bold text-danger">Selecione</span>}
           { product.available_sizes.length === 0 && <span className="fw-bold">ÚNICO</span>}
           <div>
-            {/* {
-              product.available_sizes.length > 0 && 
-              <Form.Group className="mb-3">
-                { product.available_sizes.map(size => <Form.Check key={size} className="mx-1 rounded border border-dark p-1 bg-secondary" type="checkbox" label={size} style={{ width: '50px' }} />) }
-              </Form.Group>
-            } */}
             {
               product.available_sizes.length > 0 &&
               product.available_sizes.map(size => <span onClick={() => handleSelectSize(size)} role="checkbox" aria-checked key={size} className={`mx-1 rounded border border-dark p-2 ${selectedSize === size ? 'bg-secondary' : ''}`} style={{ width: '50px', cursor: 'pointer' }}>{size}</span>)

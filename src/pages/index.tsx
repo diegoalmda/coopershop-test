@@ -3,18 +3,10 @@ import Head from 'next/head'
 import { getAllProducts, getFilteredProducts } from '../services/products';
 import { GetStaticProps } from 'next';
 import { Data } from '../types/DataType';
-// import { HeaderComponent } from '../components/HeaderComponent';
 import { ProductCard } from '../components/ProductCard';
-import Image from 'next/image';
-import LogoImg from '../assets/logo.svg';
-import { Bag } from "phosphor-react";
 import { LinkedinLogo } from "phosphor-react";
 import Form from 'react-bootstrap/Form';
-// import { Catalog } from '../components/catalog';
-import { useRouter } from 'next/router';
-import React, { Suspense } from 'react';
-import { useCartContext } from '../contexts/CartContext';
-// const Catalog = React.lazy(() => import('../components/catalog').then(({ Catalog }) => ({ default: Catalog })));
+import { HeaderComponent } from '../components/HeaderComponent';
 
 interface HomeProps {
   categories: string[];
@@ -23,15 +15,8 @@ interface HomeProps {
 export default function Home({ categories }: HomeProps) {
   const [selectedCategory, setSelectedCategory] = useState('');
   const[products, setProducts] = useState<Data>([] as Data);
-  // const router = useRouter();
-
-  // const { cartItems } = useCartContext();
-
-  // console.log(cartItems)
 
   function handleSelectedCategory(category: string) {
-    // console.log(router)
-    // router.push(`${router.pathname}?filter=${category}`, undefined, { shallow: true })
     setSelectedCategory(category)
   }
 
@@ -58,12 +43,7 @@ export default function Home({ categories }: HomeProps) {
         <link rel="icon" type="image/png" href="/favicon.png" />
       </Head>
 
-      <header className="py-4" style={{backgroundColor: '#EEEEEE'}}>
-        <div className='d-flex justify-content-between mx-4 align-items-center'>
-          <Image src={LogoImg} width={100} alt='Logotipo da empresa Coopercarga' />       
-          <Bag size={32} />    
-        </div>
-      </header>
+      <HeaderComponent />
     {
       !products ? <p>Carregando...</p> : 
       <div>
@@ -94,12 +74,6 @@ export default function Home({ categories }: HomeProps) {
               })
             }
           </div>
-          {/* <Suspense fallback={<div>Carregando...</div>}>
-            <Catalog 
-              products={products}
-              filter={selectedCategory}
-            />
-          </Suspense> */}
         </main>
 
         <footer className="py-4 fixed-bottom d-flex align-content-center" style={{backgroundColor: '#EEEEEE'}}>
