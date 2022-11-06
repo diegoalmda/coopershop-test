@@ -82,7 +82,7 @@ export function HeaderComponent() {
             cartItems.map(item => {
               const productPriceFormatted = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', }).format(item.price)
               return (
-                <div key={uuidv4()} className="d-flex justify-content-start align-items-center border-bottom border-secondary my-1 py-2 bg-light">
+                <div key={uuidv4()} className="d-flex justify-content-start align-items-center border-bottom border-secondary my-1 py-2 bg-light flex-wrap">
                   <Image className="rounded mx-2" src={`${item.image_url}`} alt="" width={50} height={50} />
                   <span className="mx-2">{item.name}</span>
                   <span>{productPriceFormatted}</span>
