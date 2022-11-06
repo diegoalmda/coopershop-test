@@ -52,15 +52,10 @@ function GlobalCartContextProvider({
       auxItems[indexItemMatched].quantity = cartItems[indexItemMatched].quantity - 1; 
       setCartItems(auxItems);
     } else {
-      const auxItems = cartItems.filter(product => (product.name !== item.name && product.selected_size !== item.selected_size));
+      let auxItems = [...cartItems];
+      auxItems.splice(indexItemMatched, 1);
       setCartItems(auxItems);
     }
-    
-    // if(indexItemMatched !== -1 && cartItems[indexItemMatched].quantity === 1) {
-    //   const auxItems = cartItems.filter(product => (product.name !== item.name && product.selected_size !== item.selected_size));
-    //   console.log("AUX", auxItems)
-    //   setCartItems(auxItems);
-    // }
   }  
 
   useEffect(() => {
