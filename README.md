@@ -29,13 +29,7 @@ O projeto foi criado com o framework [Next.js](https://nextjs.org/) inicializado
 
 ## 💻 Executando o projeto
 
-Deverá ser criado o arquivo .env.local na raiz do projeto e inserir o valor da variável de ambiente que será utilizada para acesso à API do projeto:
-
-```
-NEXT_PUBLIC_API_BASE_URL=http://localhost:3000/api
-```
-
-após este passo, instale as dependências do projeto e depois rode o servidor:
+Instale as dependências do projeto e depois rode o servidor:
 
 ```bash
 # executando o projeto usando npm
@@ -48,7 +42,3 @@ yarn dev
 ```
 
 Abra [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
-
-### Acesso online
-
-Acesse [https://coopershop-test.vercel.app/](https://coopershop-test.vercel.app/) com seu navegador para ver o resultado.
