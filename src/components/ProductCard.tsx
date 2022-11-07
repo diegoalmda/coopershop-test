@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { IProductData } from "../types/DataType";
 import { useState } from "react";
+import Image from "next/image";
 import { ModalComponent } from "./ModalComponent";
+import { IProductData } from "../types/DataType";
 
 interface ProductCardProps {
   product: IProductData

@@ -1,18 +1,18 @@
 import { Fragment, useEffect, useState } from 'react';
-import Head from 'next/head'
+import Head from 'next/head';
+import Form from 'react-bootstrap/Form';
 import { getAllProducts, getFilteredProducts } from '../services/products';
 import { GetStaticProps } from 'next';
 import { Data } from '../types/DataType';
 import { ProductCard } from '../components/ProductCard';
-import { LinkedinLogo } from "phosphor-react";
-import Form from 'react-bootstrap/Form';
 import { HeaderComponent } from '../components/HeaderComponent';
+import { LinkedinLogo } from 'phosphor-react';
 
 interface HomeProps {
   categories: string[];
 }
 
-export default function Home({ categories = [] }: HomeProps) {
+export default function Home({ categories }: HomeProps) {
   const [selectedCategory, setSelectedCategory] = useState('');
   const[products, setProducts] = useState<Data>([] as Data);
 
@@ -59,7 +59,7 @@ export default function Home({ categories = [] }: HomeProps) {
             >
               <option value="">Todos</option>
               {
-                categories?.map(category => <option key={category} value={category}>{category}</option>)
+                categories.map(category => <option key={category} value={category}>{category}</option>)
               }
             </Form.Select>
           </Form.Group>
