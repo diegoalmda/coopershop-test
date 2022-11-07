@@ -12,7 +12,7 @@ interface HomeProps {
   categories: string[];
 }
 
-export default function Home({ categories }: HomeProps) {
+export default function Home({ categories = [] }: HomeProps) {
   const [selectedCategory, setSelectedCategory] = useState('');
   const[products, setProducts] = useState<Data>([] as Data);
 
@@ -59,7 +59,7 @@ export default function Home({ categories }: HomeProps) {
             >
               <option value="">Todos</option>
               {
-                categories.map(category => <option key={category} value={category}>{category}</option>)
+                categories?.map(category => <option key={category} value={category}>{category}</option>)
               }
             </Form.Select>
           </Form.Group>
