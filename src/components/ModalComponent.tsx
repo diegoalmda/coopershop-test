@@ -37,7 +37,8 @@ export function ModalComponent({ product, showModal, setShowModal }: ModalProps)
 
     addItemToCart(formatProduct);
     setSelectedSize('');
-    setShowModal();
+    toast.success(`${formatProduct.name} (${formatProduct.selected_size}) adicionado.`, { autoClose: 2500, });
+    // setShowModal();
   }
 
   useEffect(() => {

@@ -82,12 +82,14 @@ export function HeaderComponent() {
             cartItems.map(item => {
               const productPriceFormatted = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', }).format(item.price)
               return (
-                <div key={uuidv4()} className="d-flex justify-content-start align-items-center border-bottom border-secondary my-1 py-2 bg-light flex-wrap">
-                  <Image className="rounded mx-2" src={`${item.image_url}`} alt="" width={50} height={50} />
-                  <span className="mx-2">{item.name}</span>
-                  <span>{productPriceFormatted}</span>
-                  <span>({item.selected_size})</span>
-                  <div className="d-flex align-items-center m-auto">
+                <div key={uuidv4()} className="d-flex justify-content-between border-bottom border-secondary my-1 py-2 bg-light flex-wrap">
+                  <div className="d-flex flex-row justify-content-start align-items-center flex-grow-1">
+                    <Image className="rounded mx-2" src={`${item.image_url}`} alt="" width={50} height={50} />
+                    <span className="mx-2">{item.name}</span>
+                    <span>{productPriceFormatted}</span>
+                    <span>({item.selected_size})</span>
+                  </div>
+                  <div className="d-flex align-items-center m-auto flex-shrink-1">
                     <button className="btn btn-primary mx-4" onClick={() => addItem(item)}>+</button>
                     <span className="mx-1">x {item.quantity}</span>
                     <button className="btn btn-primary mx-4" onClick={() => removeItem(item)}>-</button>
