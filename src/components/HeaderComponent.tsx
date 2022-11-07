@@ -40,6 +40,7 @@ export function HeaderComponent() {
     if(cartItems.length === 0) {
       setSmShow(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [removeItemFromCart, addItemToCart]);
 
   return (
