@@ -93,7 +93,7 @@ export function HeaderComponent() {
                   <div className="d-flex align-items-center m-auto flex-shrink-1">
                     <button className="btn btn-primary mx-4" onClick={() => addItem(item)}>+</button>
                     <span className="mx-1">x {item.quantity}</span>
-                    <button className="btn btn-primary mx-4" onClick={() => removeItem(item)}>-</button>
+                    <button className="btn btn-danger mx-4" onClick={() => removeItem(item)}>-</button>
                   </div>
                 </div>
               )
