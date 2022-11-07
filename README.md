@@ -48,3 +48,7 @@ yarn dev
 ```
 
 Abra [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
+
+### Acesso online
+
+Acesse [https://coopershop-test.vercel.app/](https://coopershop-test.vercel.app/) com seu navegador para ver o resultado.
