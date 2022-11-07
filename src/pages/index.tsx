@@ -101,6 +101,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       categories
     },
-    // revalidate: 60 * 60 * 2, // revalida a cada 2 horas
+    revalidate: 60 * 60 * 24, // revalida a cada 24 horas
   }
 }
