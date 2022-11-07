@@ -1,9 +1,9 @@
+import { useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import { toast } from 'react-toastify';
 import { ICartItem, IProductData } from '../types/DataType';
 import Image from "next/image";
 import { useCartContext } from '../contexts/CartContext';
-import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
 
 interface ModalProps {
   product: IProductData
@@ -25,7 +25,7 @@ export function ModalComponent({ product, showModal, setShowModal }: ModalProps)
 
   function handleAddProductToCart() {
     if(product.available_sizes.length > 0 && selectedSize === '') {
-      return toast.error(`Selecione um tamanho`, { autoClose: 2500, });
+      return toast.error(`Selecione um tamanho`, { autoClose: 1200, });
     }
     const formatProduct = {
       name: product.name,
@@ -37,7 +37,7 @@ export function ModalComponent({ product, showModal, setShowModal }: ModalProps)
 
     addItemToCart(formatProduct);
     setSelectedSize('');
-    toast.success(`${formatProduct.name} (${formatProduct.selected_size}) adicionado.`, { autoClose: 2500, });
+    toast.success(`${formatProduct.name} (${formatProduct.selected_size}) adicionado.`, { autoClose: 1200, });
     // setShowModal();
   }
 
