@@ -2,6 +2,17 @@
 
 Este projeto foi criado para um teste de seleção para vaga de Desenvolvedor Full Stack JavaScript Pleno oferecido pela Cooperplace em Curitiba. Onde deveria ser criado um modelo de marketplace de roupas utilizando ReactJS, CSS e Bootstrap, a partir de um dado arquivo JSON que seria utilizado como consulta para listar os items da loja.
 
+## Requisitos
+
+- Na listagem, devem aparecer as informações de nome do produto, preço e a imagem.
+- Ao clicar no produto, um modal com os detalhes dever aparecer.
+- Crie uma navbar com algumas opções
+- Crie um filtro por categoria do produto
+- A interface (disposição dos elementos, cores, botões), fica como escolha do desenvolvedor.
+- Adicione elementos extras se quiser!
+- O uso de bibliotecas é livre! Apenas se atente que o React.js, CSS e Bootstrap são obrigatórios.
+- EXTRA: Eu criei o carrinho de compras, onde o usuário consegue inserir os itens no carrinho e remover de acordo com a preferência. É possível escolher o tamanho do item, quando disponível, antes de adicionar ao carrinho.
+
 ## 🚀 Tecnologias
 
 O projeto foi criado com o framework [Next.js](https://nextjs.org/) inicializado com [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
